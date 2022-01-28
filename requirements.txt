@@ -1,0 +1,21 @@
+################################################################################
+# This requirements file has been automatically generated from `Pipfile` with
+# `pipenv-to-requirements`
+#
+#
+# This has been done to maintain backward compatibility with tools and services
+# that do not support `Pipfile` yet.
+#
+# Do NOT edit it directly, use `pipenv install [-d]` to modify `Pipfile` and
+# `Pipfile.lock` and then regenerate `requirements*.txt`.
+################################################################################
+
+anyio==3.5.0 ; python_full_version >= '3.6.2'
+certifi==2021.10.8
+charset-normalizer==2.0.10 ; python_version >= '3.5'
+h11==0.12.0 ; python_version >= '3.6'
+httpcore==0.14.4 ; python_version >= '3.6'
+httpx==0.21.3
+idna==3.3 ; python_version >= '3.5'
+rfc3986[idna2008]==1.5.0
+sniffio==1.2.0 ; python_version >= '3.5'
