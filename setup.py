@@ -1,7 +1,7 @@
 from setuptools import setup
 
 setup(
-    name="coinpaprika_async-async",
+    name="coinpaprika_async",
     version="1.0.0",
     author="DroidZed",
     author_email="droid.zed77@outlook.com",
