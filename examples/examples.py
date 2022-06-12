@@ -1,6 +1,8 @@
 # List coins
 from asyncio import run
 
+from coinpaprika_async import Client
+
 
 async def list_coins(client):
     print(await client.coins())

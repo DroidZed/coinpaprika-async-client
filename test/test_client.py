@@ -1,9 +1,9 @@
 import pytest
 from pytest_httpx import HTTPXMock
 
-from coinpaprika_async import client as async_client, ResponseObject
+from coinpaprika_async import Client, ResponseObject
 
-client = async_client.Client()
+client = Client()
 
 
 @pytest.mark.asyncio
