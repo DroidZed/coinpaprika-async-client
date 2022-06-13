@@ -1,7 +1,7 @@
 from httpx import AsyncClient, Response, HTTPError
 
 from .exceptions.api_exception import CoinpaprikaAPIException
-from .models.response_object import ResponseObject
+from coinpaprika_async.response_object import ResponseObject
 
 
 class Client:

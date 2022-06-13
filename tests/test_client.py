@@ -3,8 +3,6 @@ from pytest_httpx import HTTPXMock
 
 from coinpaprika_async import Client, ResponseObject
 
-client = Client()
-
 
 @pytest.mark.asyncio
 async def test_mock_async_price_conv(httpx_mock: HTTPXMock):
@@ -21,6 +19,8 @@ async def test_mock_async_price_conv(httpx_mock: HTTPXMock):
         "price": 2336.6037613108747,
     }
 
+    client = Client()
+
     httpx_mock.add_response(json=json)
 
     response = await client.price_converter(params=params)
@@ -36,6 +36,8 @@ async def test_mock_async_price_conv(httpx_mock: HTTPXMock):
 async def test_failed_api_call(httpx_mock: HTTPXMock):
 
     json_obj = {"error": "id not found"}
+
+    client = Client()
 
     httpx_mock.add_response(json=json_obj, status_code=404)
 
