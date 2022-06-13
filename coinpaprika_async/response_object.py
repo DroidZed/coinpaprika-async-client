@@ -17,7 +17,7 @@ class ResponseObject:
         return self._status_code
 
     @property
-    def data(self):
+    def data(self) -> dict:
         return self._data
 
     @status_code.setter
