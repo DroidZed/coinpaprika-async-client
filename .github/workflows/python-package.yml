@@ -24,9 +24,10 @@ jobs:
         uses: actions/setup-python@v3
         with:
           python-version: ${{ matrix.python-version }}
-      - name: Install pytest
+      - name: Install dependencies
         run: |
-          pip install pytest
+          python -m pip install --upgrade pip
+          if [ -f requirements-dev.txt ]; then pip install -r requirements-dev.txt; fi
       - name: Run tests with pytest
         run: |
           pytest
