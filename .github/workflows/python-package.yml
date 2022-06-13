@@ -12,8 +12,6 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
-    strategy:
-      fail-fast: false
 
     steps:
       - uses: actions/checkout@v3
@@ -44,7 +42,7 @@ jobs:
     steps:
       - name: Install pytest
         run: |
-        pip install pytest
+          pip install pytest
       - name: Run tests with pytest
         run: |
           pytest
@@ -55,8 +53,6 @@ jobs:
     runs-on: ubuntu-latest
     needs: test
     name: Publish the python package to python package index
-    strategy:
-      fail-fast: false
 
     steps:
       - name: Publish to PyPI
