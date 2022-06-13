@@ -2,7 +2,7 @@ class ResponseObject:
 
     __slots__ = {"_status_code", "_data"}
 
-    def __init__(self, status_code: int | None = None, data: dict | None = None):
+    def __init__(self, status_code: int = None, data: dict = None):
         self._status_code = status_code
         self._data = data
 
