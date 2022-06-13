@@ -1,7 +1,7 @@
 from httpx import Response, Request, DecodingError
 
 
-class CoinpaprikaAPIException(Exception):
+class ApiException(Exception):
     def __init__(self, response: Response):
 
         self.status_code: int = response.status_code

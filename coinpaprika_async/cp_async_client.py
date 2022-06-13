@@ -1,6 +1,6 @@
 from httpx import AsyncClient, Response, HTTPError
 
-from .exceptions.api_exception import CoinpaprikaAPIException
+from coinpaprika_async.api_exception import ApiException
 from coinpaprika_async.response_object import ResponseObject
 
 
@@ -30,7 +30,7 @@ class Client:
             response.raise_for_status()
 
         except HTTPError:
-            raise CoinpaprikaAPIException(response)
+            raise ApiException(response)
 
         finally:
             return resp
