@@ -1,7 +1,5 @@
 [build-system]
-requires = [
-    "setuptools>=42"
-]
+requires = ["setuptools>=42"]
 build-backend = "setuptools.build_meta"
 
 
@@ -9,3 +7,6 @@ build-backend = "setuptools.build_meta"
 line-length = 120
 target-version = ['py310']
 include = '\.pyi?$'
+
+[tool.isort]
+profile = "black"
