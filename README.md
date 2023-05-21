@@ -1,6 +1,11 @@
+<div align="center">
+<h1 style="font-size:50px;">Coinpaprika Async Client</h1>
+  
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
-
-# Coinpaprika API Python Asynchronous Client
+![PyPI - Python Version](https://img.shields.io/pypi/pyversions/coinpaprika-async)
+[![Actions Status](https://github.com/DroidZed/coinpaprika-async-client/workflows/Python%20package/badge.svg)](https://github.com/DroidZed/coinpaprika-async-client/actions)
+  
+</div>
 
 ## 1. Usage
 
