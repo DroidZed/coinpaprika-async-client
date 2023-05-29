@@ -34,7 +34,7 @@ idna==3.3
 
 iniconfig==1.1.1
 
-mypy-extensions==0.4.3
+mypy-extensions==1.0.0
 
 nodeenv==1.6.0
 
