@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="coinpaprika_async",
-    version="2.0.1",
+    version="3.0.0-pre1",
     author="DroidZed",
     author_email="droid.zed77@outlook.com",
     description="An asynchronous client for the coinpaprika API.",
@@ -12,7 +12,6 @@ setup(
     install_requires=["httpx"],
     keywords="coinpaprika_async api cryptocurrency async httpx client",
     classifiers=[
-        "Programming Language :: Python :: 3.8",
         "Programming Language :: Python :: 3.9",
         "Programming Language :: Python :: 3.10",
         "Programming Language :: Python :: 3.11",
