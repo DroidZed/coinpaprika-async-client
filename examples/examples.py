@@ -68,7 +68,7 @@ async def list_tags(client: TagsEndpoint):
 
 
 async def list_tags_additonal_fields(client: TagsEndpoint):
-    print(await client.tags({"additional_fields": "coins,icos"}))
+    print(await client.tags(additional_fields="coins,icos"))
 
 
 # Get tag by ID
