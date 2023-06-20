@@ -3,7 +3,7 @@ from typing import List, Optional
 from datetime import datetime
 
 
-@dataclass(repr=True)
+@dataclass
 class CoinItem:
     id: str
     name: str
@@ -14,14 +14,14 @@ class CoinItem:
     type: str
 
 
-@dataclass(repr=True)
+@dataclass
 class Contract:
     contract: str
     platform: str
     type: str
 
 
-@dataclass(repr=True)
+@dataclass
 class Links:
     explorer: List[str]
     facebook: List[str]
@@ -32,28 +32,28 @@ class Links:
     medium: None
 
 
-@dataclass(repr=True)
+@dataclass
 class Stats:
     subscribers: Optional[int]
     contributors: Optional[int]
     stars: Optional[int]
 
 
-@dataclass(repr=True)
+@dataclass
 class LinksExtended:
     url: str
     type: str
     stats: Optional[Stats]
 
 
-@dataclass(repr=True)
+@dataclass
 class Parent:
     id: str
     name: str
     symbol: str
 
 
-@dataclass(repr=True)
+@dataclass
 class Tag:
     id: str
     name: str
@@ -61,20 +61,20 @@ class Tag:
     ico_counter: int
 
 
-@dataclass(repr=True)
+@dataclass
 class Team:
     id: str
     name: str
     position: str
 
 
-@dataclass(repr=True)
+@dataclass
 class Whitepaper:
     link: str
     thumbnail: str
 
 
-@dataclass(repr=True)
+@dataclass
 class Coin:
     id: str
     name: str
@@ -106,7 +106,7 @@ class Coin:
     last_data_at: datetime
 
 
-@dataclass(repr=True)
+@dataclass
 class TwitterCoinItem:
     date: datetime
     user_name: str
@@ -121,7 +121,7 @@ class TwitterCoinItem:
     youtube_link: str
 
 
-@dataclass(repr=True)
+@dataclass
 class EventCointItem:
     id: str
     date: datetime
@@ -133,13 +133,13 @@ class EventCointItem:
     proof_image_link: str
 
 
-@dataclass(repr=True)
+@dataclass
 class Fiat:
     name: str
     symbol: str
 
 
-@dataclass(repr=True)
+@dataclass
 class ExchangeCoinItem:
     id: str
     name: str
@@ -147,18 +147,18 @@ class ExchangeCoinItem:
     adjusted_volume_24h_share: float
 
 
-@dataclass(repr=True)
+@dataclass
 class Key:
     price: float
     volume_24h: float
 
 
-@dataclass(repr=True)
+@dataclass
 class Quotes:
     key: Key
 
 
-@dataclass(repr=True)
+@dataclass
 class MarketCoinItem:
     exchange_id: str
     exchange_name: str

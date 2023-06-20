@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 
 
-@dataclass(repr=True)
+@dataclass
 class MarketData:
     market_cap_usd: int
     volume_24h_usd: int

@@ -2,13 +2,13 @@ from typing import List
 from dataclasses import dataclass
 
 
-@dataclass(repr=True)
+@dataclass
 class Social:
     url: str
     followers: int
 
 
-@dataclass(repr=True)
+@dataclass
 class Links:
     github: List[Social]
     linkedin: List[Social]
@@ -17,14 +17,14 @@ class Links:
     additional: List[Social]
 
 
-@dataclass(repr=True)
+@dataclass
 class Position:
     coin_id: str
     coin_name: str
     position: str
 
 
-@dataclass(repr=True)
+@dataclass
 class PeopleItem:
     id: str
     name: str

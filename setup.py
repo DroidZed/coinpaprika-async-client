@@ -2,7 +2,7 @@ from setuptools import setup
 
 setup(
     name="coinpaprika_async",
-    version="3.0.0-pre1",
+    version="3.0.0rc2",
     author="DroidZed",
     author_email="droid.zed77@outlook.com",
     description="An asynchronous client for the coinpaprika API.",

@@ -9,7 +9,7 @@ class KeyEndpoint(CoinpaprikaAPI):
         if res.Error:
             return res.Error
 
-        data = res.Data
+        data: List[Dict[str, Any]] = res.Data
 
         return KeyInfo(
             plan=data["plan"],

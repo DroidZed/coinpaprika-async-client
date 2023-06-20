@@ -1,19 +1,19 @@
 from dataclasses import dataclass
 
 
-@dataclass(repr=True)
+@dataclass
 class CurrentMonthUsage:
     requests_made: int
     requests_left: int
 
 
-@dataclass(repr=True)
+@dataclass
 class APIUsage:
     message: str
     current_month: CurrentMonthUsage
 
 
-@dataclass(repr=True)
+@dataclass
 class KeyInfo:
     plan: str
     plan_started_at: str
