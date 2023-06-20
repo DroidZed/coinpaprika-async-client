@@ -4,7 +4,7 @@ from .models import *
 
 
 class TickersEndpoint(CoinpaprikaAPI):
-    async def tickers(self, quotes: Optional[str] = "USD"):
+    async def tickers(self, quotes: str = "USD"):
         res = await self.internal.call_api("tickers", quotes=quotes)
         if res.Error:
             return res.Error
@@ -28,7 +28,7 @@ class TickersEndpoint(CoinpaprikaAPI):
             for tc in data
         ]
 
-    async def ticker_by_coin(self, coin_id: str, quotes: Optional[str] = "USD"):
+    async def ticker_by_coin(self, coin_id: str, quotes: str = "USD"):
         res = await self.internal.call_api(f"tickers/{coin_id}", quotes=quotes)
 
         if res.Error:
@@ -57,10 +57,10 @@ class TickersEndpoint(CoinpaprikaAPI):
         self,
         coin_id: str,
         start: str,
-        end: Optional[str] = "NOW",
+        end: str = "NOW",
         limit: Optional[int] = 1000,
-        quotes: Optional[str] = "USD",
-        interval: Optional[str] = "5m",
+        quotes: str = "USD",
+        interval: str = "5m",
     ):
         res = await self.internal.call_api(
             f"tickers/{coin_id}/historical",

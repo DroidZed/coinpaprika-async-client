@@ -14,7 +14,7 @@ class CoinPaprikaAsyncClient:
 
     __PRO_API_URL = "https://api-pro.coinpaprika.com/v1"
 
-    def __init__(self, http: HttpAsyncClient = HttpAsyncClient(), api_key: Optional[str] = None):
+    def __init__(self, http: HttpAsyncClient = HttpAsyncClient(), api_key: str = None):
         self._http_client = http
         self._is_paid = api_key != None
         self._api_key = api_key

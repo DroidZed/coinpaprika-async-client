@@ -7,3 +7,4 @@ from .misc import *
 from .exchanges import *
 from .tickers import *
 from .tags import *
+from .people import *

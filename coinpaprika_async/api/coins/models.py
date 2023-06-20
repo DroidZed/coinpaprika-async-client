@@ -1,5 +1,5 @@
 from dataclasses import dataclass
-from typing import List, Optional
+from typing import List, Optional, Dict
 from datetime import datetime
 
 
@@ -154,11 +154,6 @@ class Key:
 
 
 @dataclass
-class Quotes:
-    key: Key
-
-
-@dataclass
 class MarketCoinItem:
     exchange_id: str
     exchange_name: str
@@ -172,7 +167,7 @@ class MarketCoinItem:
     fee_type: str
     outlier: bool
     adjusted_volume_24h_share: float
-    quotes: Quotes
+    quotes: Dict[str, Key]
     last_updated: datetime
 
 

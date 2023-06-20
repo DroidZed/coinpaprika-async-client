@@ -1,3 +1,4 @@
+from typing import Dict, Any
 from ..coinpaprika_api import CoinpaprikaAPI
 from .models import KeyInfo, APIUsage, CurrentMonthUsage
 
@@ -9,7 +10,7 @@ class KeyEndpoint(CoinpaprikaAPI):
         if res.Error:
             return res.Error
 
-        data: List[Dict[str, Any]] = res.Data
+        data: Dict[str, Any] = res.Data
 
         return KeyInfo(
             plan=data["plan"],

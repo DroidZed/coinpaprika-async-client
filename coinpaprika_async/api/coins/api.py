@@ -55,7 +55,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
             for e in data
         ]
 
-    async def markets(self, coin_id: str, quotes: Optional[str] = "USD"):
+    async def markets(self, coin_id: str, quotes: str = "USD"):
         res = await self.internal.call_api(f"coins/{coin_id}/markets", quotes=quotes)
 
         if res.Error:
@@ -70,7 +70,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
                 pair=m["pair"],
                 quote_currency_id=m["quote_currency_id"],
                 quote_currency_name=m["quote_currency_name"],
-                quotes=Quotes(key=Key(**m["quotes"]["USD"])),
+                quotes={key: Key(**m["quotes"][key]) for key in quotes.split(",")},
                 last_updated=m["last_updated"],
                 fee_type=m["fee_type"],
                 exchange_name=m["exchange_name"],
@@ -83,7 +83,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
             for m in data
         ]
 
-    async def candle(self, coin_id: str, quote: Optional[str] = "usd"):
+    async def candle(self, coin_id: str, quote: str = "usd"):
         res = await self.internal.call_api(
             f"coins/{coin_id}/ohlcv/latest",
             quote=quote,
@@ -110,7 +110,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
         )
         return self.__candle_handler(res)
 
-    async def today(self, coin_id: str, quote: Optional[str] = "usd"):
+    async def today(self, coin_id: str, quote: str = "usd"):
         res = await self.internal.call_api(
             f"coins/{coin_id}/ohlcv/today",
             quote=quote,

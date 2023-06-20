@@ -1,7 +1,7 @@
 import pytest
 from pytest_httpx import HTTPXMock
 
-from coinpaprika_async import CoinpaprikaAPI, CoinsEndpoint, ApiError
+from coinpaprika_async import MiscelanousEndpoints, CoinsEndpoint, ApiError
 
 
 class TestClient:
@@ -20,13 +20,13 @@ class TestClient:
             "price": 2336.6037613108747,
         }
 
-        api = CoinpaprikaAPI()
+        api = MiscelanousEndpoints()
 
         httpx_mock.add_response(json=json)
 
-        response = await api.price_converter(params=params)
+        response = await api.price_converter(**params)
 
-        assert response.Data is not None
+        assert not isinstance(response, ApiError)
 
     @pytest.mark.asyncio
     async def test_should_give_proper_coins(self):

@@ -2,10 +2,12 @@ from asyncio import run
 
 from coinpaprika_async import (
     CoinsEndpoint,
-    TagsEndpoint,
-    MiscelanousEndpoints,
-    MarketEndpoint,
     ExchangesEndpoint,
+    KeyEndpoint,
+    MarketEndpoint,
+    MiscelanousEndpoints,
+    TagsEndpoint,
+    PeopleEndpoint,
     TickersEndpoint,
 )
 
@@ -81,12 +83,12 @@ async def get_all_tickers(client: TickersEndpoint):
 
 # Get ticker information for a specific coin (USD,BTC,ETH)
 async def get_ticker_by_coin(client: TickersEndpoint):
-    print(await client.ticker("btc-bitcoin"))
+    print(await client.ticker_by_coin("btc-bitcoin"))
 
 
 # Get historical ticker information for a specific coin (USD,BTC,ETH)
 async def get_historical_information(client: TickersEndpoint):
-    print(await client.historical("btc-bitcoin", {"start": "2019-04-11T00:00:00Z"}))
+    print(await client.historical_ticks("btc-bitcoin", start="2019-04-11T00:00:00Z"))
 
 
 # List exchanges
@@ -120,7 +122,9 @@ async def search_curr(client: MiscelanousEndpoints):
 async def convt_curr(client: MiscelanousEndpoints):
     print(
         await client.price_converter(
-            {"base_currency_id": "btc-bitcoin", "quote_currency_id": "usd-us-dollars", "amount": 1337}
+            base_currency_id="btc-bitcoin",
+            quote_currency_id="usd-us-dollars",
+            amount=1337,
         )
     )
 

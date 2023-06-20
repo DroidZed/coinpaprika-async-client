@@ -1,10 +1,10 @@
 <div align="center">
 <h1 style="font-size:50px;">Coinpaprika Async Client</h1>
-  
+
 [![Code style: black](https://img.shields.io/badge/code%20style-black-000000.svg)](https://github.com/psf/black)
 ![PyPI - Python Version](https://img.shields.io/pypi/pyversions/coinpaprika-async)
 [![Actions Status](https://github.com/DroidZed/coinpaprika-async-client/workflows/Python%20package/badge.svg)](https://github.com/DroidZed/coinpaprika-async-client/actions)
-  
+
 </div>
 
 ## 1. Usage
@@ -27,11 +27,18 @@ pipenv install coinpaprika_async
 
 ## 3. Getting started
 
-```py
-from coinpaprika_async import Client
+Each top-level path has their own endpoint class now:
 
-client = Client()
-```
+
+- `GET` /coins `->` `CoinsEndpoint`
+- `GET` /exchanges `->` `ExchangesEndpoint`
+- `GET` /key `->` `KeyEndpoint`
+- `GET` /global `->` `MarketEndpoint`
+- `GET` /search + /price-converter `->` `MiscelanousEndpoints`
+- `GET` /people `->` `PeopleEndpoint`
+- `GET` /tags `->` `TagsEndpoint`
+- `GET` /tickers `->` `TickersEndpoint`
+
 
 ## 4 Examples:
 
