@@ -14,47 +14,51 @@ from coinpaprika_async import (
 
 # List coins
 async def list_coins(client: CoinsEndpoint):
-    print(await client.coins())
+    print(await client.get_all())
 
 
 # Get coin by ID (example: btc-bitcoin)
 async def find_coin_by_id(client: CoinsEndpoint, c_id: str):
-    print(await client.coin(c_id))
+    print(await client.coin_by_id(c_id))
 
 
 # Get tweets by coin ID (max 50 tweets)
 async def get_tweets_by_coin_id(client: CoinsEndpoint):
-    print(await client.twitter("btc-bitcoin"))
+    print(await client.tweets_of_coin("btc-bitcoin"))
 
 
 # Get coin events by coin ID
 async def get_events_by_coin_id(client: CoinsEndpoint):
-    print(await client.events("btc-bitcoin"))
+    print(await client.events_of_coin("btc-bitcoin"))
 
 
 # Get exchanges by coin ID
 async def get_exchanges_by_coin_id(client: CoinsEndpoint):
-    print(await client.exchanges("btc-bitcoin"))
+    print(await client.exchanges_of_coin("btc-bitcoin"))
 
 
 # Get markets by coin ID (USD,BTC,ETH,PLN)
 async def get_markets_by_coin_id(client: CoinsEndpoint):
-    print(await client.markets("btc-bitcoin", quotes="USD"))
+    print(await client.markets_of_coin("btc-bitcoin", quotes="USD"))
 
 
 # Get 24h OHLC candle (USD,BTC)
 async def get_24h_ohlc(client: CoinsEndpoint):
-    print(await client.candle("btc-bitcoin"))
+    print(await client.latest_ohlcv("btc-bitcoin"))
 
 
 # Get historical OHLCV information for a specific coin (USD,BTC)
 async def get_hist_ohlcv(client: CoinsEndpoint):
-    print(await client.candles("btc-bitcoin", start="2019-01-11T00:00:00Z"))
+    print(
+        await client.historical_ohlcv(
+            "btc-bitcoin", start="2019-01-11T00:00:00Z"
+        )
+    )
 
 
 # Get today OHLC (can change every each request until actual close of the day at 23:59:59)
 async def get_today_ohl(client: CoinsEndpoint):
-    print(await client.today("btc-bitcoin"))
+    print(await client.ohlcv_of_today("btc-bitcoin"))
 
 
 # Get people by ID (example: vitalik-buterin)
@@ -88,7 +92,11 @@ async def get_ticker_by_coin(client: TickersEndpoint):
 
 # Get historical ticker information for a specific coin (USD,BTC,ETH)
 async def get_historical_information(client: TickersEndpoint):
-    print(await client.historical_ticks("btc-bitcoin", start="2019-04-11T00:00:00Z"))
+    print(
+        await client.historical_ticks(
+            "btc-bitcoin", start="2019-04-11T00:00:00Z"
+        )
+    )
 
 
 # List exchanges
