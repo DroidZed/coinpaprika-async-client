@@ -5,7 +5,7 @@ from coinpaprika_async import (
     ExchangesEndpoint,
     KeyEndpoint,
     MarketEndpoint,
-    MiscelanousEndpoints,
+    MiscellaneousEndpoints,
     TagsEndpoint,
     PeopleEndpoint,
     TickersEndpoint,
@@ -62,7 +62,7 @@ async def get_today_ohl(client: CoinsEndpoint):
 
 
 # Get people by ID (example: vitalik-buterin)
-async def get_people_by_id(client: MiscelanousEndpoints):
+async def get_people_by_id(client: MiscellaneousEndpoints):
     print(await client.people("vitalik-buterin"))
 
 
@@ -115,7 +115,7 @@ async def exchg_markers_by_id(client: ExchangesEndpoint):
 
 
 # Search
-async def search_curr(client: MiscelanousEndpoints):
+async def search_curr(client: MiscellaneousEndpoints):
     print(
         await client.search(
             q="btc",
@@ -127,7 +127,7 @@ async def search_curr(client: MiscelanousEndpoints):
 
 
 # Price converter
-async def convt_curr(client: MiscelanousEndpoints):
+async def convt_curr(client: MiscellaneousEndpoints):
     print(
         await client.price_converter(
             base_currency_id="btc-bitcoin",

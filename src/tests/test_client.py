@@ -1,7 +1,12 @@
 import pytest
 from pytest_httpx import HTTPXMock
 
-from coinpaprika_async import MiscelanousEndpoints, CoinsEndpoint, ApiError
+from src.coinpaprika_async import (
+    CoinsEndpoint,
+    ExchangesEndpoint,
+    MiscellaneousEndpoints,
+    ApiError,
+)
 
 
 class TestClient:
@@ -24,7 +29,7 @@ class TestClient:
             "price": 2336.6037613108747,
         }
 
-        api = MiscelanousEndpoints()
+        api = MiscellaneousEndpoints()
 
         httpx_mock.add_response(json=json)
 
@@ -61,6 +66,17 @@ class TestClient:
         coins_api = CoinsEndpoint()
 
         response = await coins_api.markets_of_coin("btc-bitcoin")
+
+        if isinstance(response, ApiError):
+            assert False
+
+        assert len(response)
+
+    @pytest.mark.asyncio
+    async def test_for_exchanges(self):
+        exchanges_api = ExchangesEndpoint()
+
+        response = await exchanges_api.exchange_list()
 
         if isinstance(response, ApiError):
             assert False
