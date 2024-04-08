@@ -3,7 +3,7 @@ from ..coinpaprika_api import CoinpaprikaAPI
 from .models import *
 
 
-class MiscelanousEndpoints(CoinpaprikaAPI):
+class MiscellaneousEndpoints(CoinpaprikaAPI):
     async def people(self, person_id: str):
         res = await self.internal.call_api(f"people/{person_id}")
 

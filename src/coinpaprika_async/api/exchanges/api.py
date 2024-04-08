@@ -1,14 +1,32 @@
-from typing import Optional
+from typing import Optional, Any
+
 from ..coinpaprika_api import CoinpaprikaAPI
 from .models import *
 
 
 class ExchangesEndpoint(CoinpaprikaAPI):
-    async def exchange_list(self, params: Optional[dict] = None):
-        return await self.internal.call_api("exchanges", params)
+    async def exchange_list(self, **params):
+        res = await self.internal.call_api("exchanges", **params)
 
-    async def exchange(self, exchange_id: str, params: Optional[dict]):
-        return await self.internal.call_api(f"exchanges/{exchange_id}", params)
+        if res.Error:
+            return res.Error
 
-    async def exchange_markets(self, exchange_id: str, params: Optional[dict] = None):
-        return await self.internal.call_api(f"exchanges/{exchange_id}/markets", params)
+        return [Exchange(**data) for data in res.Data]
+
+    async def exchange(self, exchange_id: str, **params):
+        res = await self.internal.call_api(f"exchanges/{exchange_id}", **params)
+
+        if res.Error:
+            return res.Error
+
+        return Exchange(**res.Data)
+
+    async def exchange_markets(self, exchange_id: str, **params):
+        res = await self.internal.call_api(
+            f"exchanges/{exchange_id}/markets", **params
+        )
+
+        if res.Error:
+            return res.Error
+
+        return ExchangeMarket(**res.Data)
