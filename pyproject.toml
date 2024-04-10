@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "coinpaprika-async"
-version = "3.1.1"
+version = "3.1.2"
 description = "An asynchronous library for interacting with the Coinpaprika.com API, written with httpx in Python."
 authors = ["DroidZed <41507665+DroidZed@users.noreply.github.com>"]
 readme = "README.md"
