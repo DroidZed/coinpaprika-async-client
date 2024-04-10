@@ -1,0 +1,6 @@
+from .models import *
+from ..coinpaprika_api import CoinpaprikaAPI as CoinpaprikaAPI
+
+class TagsEndpoint(CoinpaprikaAPI):
+    async def tags(self, additional_fields: str | None = None): ...
+    async def tag(self, tag_id: str, additional_fields: str | None = None): ...

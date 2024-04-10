@@ -15,6 +15,7 @@ pytest-asyncio = "*"
 build = "*"
 twine = "*"
 isort = "*"
+mypy = "*"
 
 [requires]
 python_version = "3.11"

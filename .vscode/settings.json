@@ -1,6 +1,6 @@
 {
-    "python.analysis.typeCheckingMode": "basic",
-    "python.analysis.extraPaths": [
-        "./src"
-    ]
+  "python.analysis.typeCheckingMode": "basic",
+  "python.analysis.extraPaths": ["./src"],
+  "cSpell.words": ["coinpaprika"],
+  "python.analysis.autoImportCompletions": true
 }
