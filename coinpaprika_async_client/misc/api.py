@@ -1,13 +1,18 @@
 from typing import Optional, Any, Dict, List
 
+from ..client import CoinPaprikaAsyncClient
+
 from ..networking_layer import ApiError
-from ..coinpaprika_api import CoinpaprikaAPI
+
 from .models import *
 
 
-class MiscellaneousEndpoints(CoinpaprikaAPI):
+class MiscellaneousEndpoints:
+    def __init__(self) -> None:
+        self.__internal = CoinPaprikaAsyncClient()
+
     async def people(self, person_id: str) -> ApiError | list[PeopleItem]:
-        res = await self.internal.call_api(f"people/{person_id}")
+        res = await self.__internal.call_api(f"people/{person_id}")
 
         if res.Error:
             return res.Error
@@ -58,7 +63,7 @@ class MiscellaneousEndpoints(CoinpaprikaAPI):
         Returns:
             A list of the search result items.
         """
-        res = await self.internal.call_api(
+        res = await self.__internal.call_api(
             "search",
             q=q,
             c=categories,
@@ -87,7 +92,7 @@ class MiscellaneousEndpoints(CoinpaprikaAPI):
         quote_currency_id: str,
         amount: Optional[int] = 0,
     ) -> ApiError | ConvertResult:
-        res = await self.internal.call_api(
+        res = await self.__internal.call_api(
             "price-converter",
             base_currency_id=base_currency_id,
             quote_currency_id=quote_currency_id,

@@ -1,13 +1,18 @@
 from typing import Optional, List, Dict, Any
 
+from ..client import CoinPaprikaAsyncClient
+
 from ..networking_layer import ApiError
-from ..coinpaprika_api import CoinpaprikaAPI
+
 from .models import *
 
 
-class TickersEndpoint(CoinpaprikaAPI):
+class TickersEndpoint:
+    def __init__(self) -> None:
+        self.__internal = CoinPaprikaAsyncClient()
+
     async def tickers(self, quotes: str = "USD") -> ApiError | list[TickerItem]:
-        res = await self.internal.call_api("tickers", quotes=quotes)
+        res = await self.__internal.call_api("tickers", quotes=quotes)
         if res.Error:
             return res.Error
 
@@ -33,7 +38,9 @@ class TickersEndpoint(CoinpaprikaAPI):
     async def ticker_by_coin(
         self, coin_id: str, quotes: str = "USD"
     ) -> ApiError | list[TickerItem]:
-        res = await self.internal.call_api(f"tickers/{coin_id}", quotes=quotes)
+        res = await self.__internal.call_api(
+            f"tickers/{coin_id}", quotes=quotes
+        )
 
         if res.Error:
             return res.Error
@@ -66,7 +73,7 @@ class TickersEndpoint(CoinpaprikaAPI):
         quotes: str = "USD",
         interval: str = "5m",
     ) -> ApiError | list[HistoryTickerItem]:
-        res = await self.internal.call_api(
+        res = await self.__internal.call_api(
             f"tickers/{coin_id}/historical",
             start=start,
             end=end,

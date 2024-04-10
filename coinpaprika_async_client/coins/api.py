@@ -1,11 +1,16 @@
+from ..client import CoinPaprikaAsyncClient
+
 from ..networking_layer import Result, ApiError
-from ..coinpaprika_api import CoinpaprikaAPI
+
 from .models import *
 
 
-class CoinsEndpoint(CoinpaprikaAPI):
+class CoinsEndpoint:
+    def __init__(self) -> None:
+        self.__internal = CoinPaprikaAsyncClient()
+
     async def get_all(self) -> ApiError | list[CoinItem]:
-        res = await self.internal.call_api("coins")
+        res = await self.__internal.call_api("coins")
 
         if res.Error:
             return res.Error
@@ -13,7 +18,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
         return [CoinItem(**e) for e in res.Data]
 
     async def coin_by_id(self, coin_id: str) -> Result:
-        return await self.internal.call_api(f"coins/{coin_id}")
+        return await self.__internal.call_api(f"coins/{coin_id}")
 
     async def tweets_of_coin(
         self, coin_id: str
@@ -23,7 +28,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
         Args:
             coin_id: Required id for the coin
         """
-        res = await self.internal.call_api(f"coins/{coin_id}/twitter")
+        res = await self.__internal.call_api(f"coins/{coin_id}/twitter")
 
         if res.Error:
             return res.Error
@@ -38,7 +43,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
         Args:
             coin_id: Required id for the coin
         """
-        res = await self.internal.call_api(f"coins/{coin_id}/events")
+        res = await self.__internal.call_api(f"coins/{coin_id}/events")
 
         if res.Error:
             return res.Error
@@ -53,7 +58,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
         Args:
             coin_id:  Required id for the coin
         """
-        res = await self.internal.call_api(f"coins/{coin_id}/exchanges")
+        res = await self.__internal.call_api(f"coins/{coin_id}/exchanges")
 
         if res.Error:
             return res.Error
@@ -77,7 +82,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
             coin_id: Required id for the coin
             quotes: Comma separated list of quotes to return. Currently allowed values: BTC, ETH, USD, EUR, PLN, KRW, GBP, CAD, JPY, RUB, TRY, NZD, AUD, CHF, UAH, HKD, SGD, NGN, PHP, MXN, BRL, THB, CLP, CNY, CZK, DKK, HUF, IDR, ILS, INR, MYR, NOK, PKR, SEK, TWD, ZAR, VND, BOB, COP, PEN, ARS and ISK.
         """
-        res = await self.internal.call_api(
+        res = await self.__internal.call_api(
             f"coins/{coin_id}/markets", quotes=quotes
         )
 
@@ -115,7 +120,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
             coin_id: Required id for the coin
             quote: returned data quote (available values: usd & btc).
         """
-        res = await self.internal.call_api(
+        res = await self.__internal.call_api(
             f"coins/{coin_id}/ohlcv/latest",
             quote=quote,
         )
@@ -141,7 +146,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
             interval: returned OHLCV point interval (available values: 15m, 30m, 1h, 6h, 12h, 24h)
             quote: returned data quote (available values: usd & btc)
         """
-        res = await self.internal.call_api(
+        res = await self.__internal.call_api(
             f"coins/{coin_id}/ohlcv/historical",
             start=start,
             end=end,
@@ -160,7 +165,7 @@ class CoinsEndpoint(CoinpaprikaAPI):
             coin_id: Required id for the coin
             quote: returned data quote (available values: usd & btc)
         """
-        res = await self.internal.call_api(
+        res = await self.__internal.call_api(
             f"coins/{coin_id}/ohlcv/today",
             quote=quote,
         )

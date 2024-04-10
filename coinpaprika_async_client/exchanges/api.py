@@ -1,14 +1,18 @@
-from typing import Optional, Any
+from typing import Any
 
-from coinpaprika_async_client.api.networking_layer.http_models import ApiError
+from ..client import CoinPaprikaAsyncClient
 
-from ..coinpaprika_api import CoinpaprikaAPI
+from ..networking_layer import ApiError
+
 from .models import *
 
 
-class ExchangesEndpoint(CoinpaprikaAPI):
+class ExchangesEndpoint:
+    def __init__(self) -> None:
+        self.__internal = CoinPaprikaAsyncClient()
+
     async def exchange_list(self, **params: Any) -> ApiError | list[Exchange]:
-        res = await self.internal.call_api("exchanges", **params)
+        res = await self.__internal.call_api("exchanges", **params)
 
         if res.Error:
             return res.Error
@@ -18,7 +22,9 @@ class ExchangesEndpoint(CoinpaprikaAPI):
     async def get_exchange(
         self, exchange_id: str, **params: Any
     ) -> ApiError | Exchange:
-        res = await self.internal.call_api(f"exchanges/{exchange_id}", **params)
+        res = await self.__internal.call_api(
+            f"exchanges/{exchange_id}", **params
+        )
 
         if res.Error:
             return res.Error
@@ -28,7 +34,7 @@ class ExchangesEndpoint(CoinpaprikaAPI):
     async def exchange_markets(
         self, exchange_id: str, **params: Any
     ) -> ApiError | ExchangeMarket:
-        res = await self.internal.call_api(
+        res = await self.__internal.call_api(
             f"exchanges/{exchange_id}/markets", **params
         )
 

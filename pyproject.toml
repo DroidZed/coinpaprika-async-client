@@ -1,7 +1,7 @@
 [tool.poetry]
-name = "coinpaprika-async-client"
-version = "0.1.0"
-description = ""
+name = "coinpaprika-async"
+version = "3.1.0"
+description = "An asynchronous library for interacting with the Coinpaprika.com API, written with httpx in Python."
 authors = ["DroidZed <41507665+DroidZed@users.noreply.github.com>"]
 readme = "README.md"
 packages = [{ include = "coinpaprika_async_client" }]
@@ -27,7 +27,7 @@ build-backend = "poetry.core.masonry.api"
 
 [tool.black]
 line-length = 80
-target-version = ['py310']
+target-version = ['py311']
 include = '\.pyi?$'
 
 [tool.isort]

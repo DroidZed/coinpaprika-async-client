@@ -1,6 +1,6 @@
 from typing import Any, Optional
 
-from . import Result, HttpAsyncClient
+from ..networking_layer import HttpAsyncClient, Result
 
 
 class CoinPaprikaAsyncClient:

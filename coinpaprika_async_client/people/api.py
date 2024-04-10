@@ -1,13 +1,18 @@
 from typing import Any, Dict, List
 
+from ..client import CoinPaprikaAsyncClient
+
 from ..networking_layer import ApiError
-from ..coinpaprika_api import CoinpaprikaAPI
+
 from .models import *
 
 
-class PeopleEndpoint(CoinpaprikaAPI):
+class PeopleEndpoint:
+    def __init__(self) -> None:
+        self.__internal = CoinPaprikaAsyncClient()
+
     async def people(self, person_id: str) -> ApiError | list[PeopleItem]:
-        res = await self.internal.call_api(f"people/{person_id}")
+        res = await self.__internal.call_api(f"people/{person_id}")
 
         if res.Error:
             return res.Error

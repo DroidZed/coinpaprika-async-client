@@ -1,13 +1,18 @@
 from typing import Dict, Any
 
+from ..client import CoinPaprikaAsyncClient
+
 from ..networking_layer import ApiError
-from ..coinpaprika_api import CoinpaprikaAPI
+
 from .models import KeyInfo, APIUsage, CurrentMonthUsage
 
 
-class KeyEndpoint(CoinpaprikaAPI):
+class KeyEndpoint:
+    def __init__(self) -> None:
+        self.__internal = CoinPaprikaAsyncClient()
+
     async def get_key_info(self) -> ApiError | KeyInfo:
-        res = await self.internal.call_api("key/info")
+        res = await self.__internal.call_api("key/info")
 
         if res.Error:
             return res.Error
