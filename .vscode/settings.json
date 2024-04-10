@@ -1,6 +1,15 @@
 {
   "python.analysis.typeCheckingMode": "basic",
   "python.analysis.extraPaths": ["./src"],
-  "cSpell.words": ["coinpaprika"],
+  "cSpell.words": [
+    "buterin",
+    "coinpaprika",
+    "convt",
+    "exchg",
+    "icos",
+    "OHLC",
+    "ohlcv",
+    "vitalik"
+  ],
   "python.analysis.autoImportCompletions": true
 }

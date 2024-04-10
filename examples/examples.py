@@ -3,11 +3,8 @@ from asyncio import run
 from coinpaprika_async import (
     CoinsEndpoint,
     ExchangesEndpoint,
-    KeyEndpoint,
-    MarketEndpoint,
     MiscellaneousEndpoints,
     TagsEndpoint,
-    PeopleEndpoint,
     TickersEndpoint,
 )
 
@@ -71,7 +68,7 @@ async def list_tags(client: TagsEndpoint):
     print(await client.tags())
 
 
-async def list_tags_additonal_fields(client: TagsEndpoint):
+async def list_tags_additional_fields(client: TagsEndpoint):
     print(await client.tags(additional_fields="coins,icos"))
 
 
@@ -100,18 +97,18 @@ async def get_historical_information(client: TickersEndpoint):
 
 
 # List exchanges
-async def get_echange_list(client: ExchangesEndpoint):
+async def get_exchange_list(client: ExchangesEndpoint):
     print(await client.exchange_list())
 
 
 # Get exchange by ID
 async def exchange_currencies(client: ExchangesEndpoint):
-    print(await client.exchange("binance", {"quotes": "USD"}))
+    print(await client.exchange("binance", quotes="USD"))
 
 
 # Get markets by exchange ID (USD,BTC,ETH,PLN) with quotes USD
 async def exchg_markers_by_id(client: ExchangesEndpoint):
-    print(await client.exchange_markets("binance", {"quotes": "USD"}))
+    print(await client.exchange_markets("binance", quotes="USD"))
 
 
 # Search
