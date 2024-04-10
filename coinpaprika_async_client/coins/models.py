@@ -2,6 +2,8 @@ from dataclasses import dataclass
 from typing import List, Optional, Dict
 from datetime import datetime
 
+from ..shared import Fiat, Tag
+
 
 @dataclass
 class CoinItem:
@@ -22,7 +24,7 @@ class Contract:
 
 
 @dataclass
-class Links:
+class CoinsLinks:
     explorer: List[str]
     facebook: List[str]
     reddit: List[str]
@@ -51,14 +53,6 @@ class Parent:
     id: str
     name: str
     symbol: str
-
-
-@dataclass
-class Tag:
-    id: str
-    name: str
-    coin_counter: int
-    ico_counter: int
 
 
 @dataclass
@@ -99,7 +93,7 @@ class Coin:
     contract: str
     platform: str
     contracts: List[Contract]
-    links: Links
+    links: CoinsLinks
     links_extended: List[LinksExtended]
     whitepaper: Whitepaper
     first_data_at: datetime
@@ -134,12 +128,6 @@ class EventCoinItem:
 
 
 @dataclass
-class Fiat:
-    name: str
-    symbol: str
-
-
-@dataclass
 class ExchangeCoinItem:
     id: str
     name: str
@@ -148,7 +136,7 @@ class ExchangeCoinItem:
 
 
 @dataclass
-class Key:
+class QuotesKey:
     price: float
     volume_24h: float
 
@@ -167,7 +155,7 @@ class MarketCoinItem:
     fee_type: str
     outlier: bool
     adjusted_volume_24h_share: float
-    quotes: Dict[str, Key]
+    quotes: Dict[str, QuotesKey]
     last_updated: datetime
 
 

@@ -2,24 +2,26 @@ from typing import List
 from datetime import datetime
 from dataclasses import dataclass
 
+from ..shared import Tag
+
 
 @dataclass
-class Social:
+class MiscSocial:
     url: str
     followers: int
 
 
 @dataclass
-class Links:
-    github: List[Social]
-    linkedin: List[Social]
-    medium: List[Social]
-    twitter: List[Social]
-    additional: List[Social]
+class MiscLinks:
+    github: List[MiscSocial]
+    linkedin: List[MiscSocial]
+    medium: List[MiscSocial]
+    twitter: List[MiscSocial]
+    additional: List[MiscSocial]
 
 
 @dataclass
-class Position:
+class MiscPosition:
     coin_id: str
     coin_name: str
     position: str
@@ -30,13 +32,6 @@ class Person:
     id: str
     name: str
     teams_count: int
-
-
-@dataclass
-class PeopleItem(Person):
-    description: str
-    links: Links
-    positions: List[Position]
 
 
 @dataclass
@@ -63,7 +58,7 @@ class Currency:
 
 
 @dataclass
-class Exchange:
+class MiscExchange:
     id: str
     name: str
     rank: int
@@ -78,17 +73,16 @@ class Ico:
 
 
 @dataclass
-class Tag:
-    id: str
-    name: str
-    coin_counter: int
-    ico_counter: int
-
-
-@dataclass
 class SearchResult:
     currencies: List[Currency]
     icos: List[Ico]
-    exchanges: List[Exchange]
+    exchanges: List[MiscExchange]
     people: List[Person]
     tags: List[Tag]
+
+
+@dataclass
+class PeopleModel(Person):
+    description: str
+    links: MiscLinks
+    positions: List[MiscPosition]

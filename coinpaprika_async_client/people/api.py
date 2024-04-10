@@ -25,7 +25,7 @@ class PeopleEndpoint:
                 name=p["name"],
                 description=p["description"],
                 teams_count=p["teams_count"],
-                links=Links(
+                links=PeopleLinks(
                     additional=[Social(**s) for s in p["links"]["additional"]],
                     github=[Social(**s) for s in p["links"]["github"]],
                     linkedin=[Social(**s) for s in p["links"]["linkedin"]],

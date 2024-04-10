@@ -2,15 +2,11 @@ from dataclasses import dataclass
 from typing import List, Optional
 from datetime import datetime
 
-
-@dataclass
-class Fiat:
-    name: str
-    symbol: str
+from ..shared import Fiat
 
 
 @dataclass
-class Links:
+class ExchangeLinks:
     website: List[str]
     twitter: List[str]
 
@@ -41,7 +37,7 @@ class Exchange:
     api_status: bool
     description: str
     message: str
-    links: Links
+    links: ExchangeLinks
     markets_data_fetched: bool
     adjusted_rank: int
     reported_rank: int

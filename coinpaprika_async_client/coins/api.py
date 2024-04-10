@@ -97,7 +97,8 @@ class CoinsEndpoint:
                 quote_currency_id=m["quote_currency_id"],
                 quote_currency_name=m["quote_currency_name"],
                 quotes={
-                    key: Key(**m["quotes"][key]) for key in quotes.split(",")
+                    key: QuotesKey(**m["quotes"][key])
+                    for key in quotes.split(",")
                 },
                 last_updated=m["last_updated"],
                 fee_type=m["fee_type"],

@@ -10,7 +10,7 @@ class Social:
 
 
 @dataclass
-class Links:
+class PeopleLinks:
     github: List[Social]
     linkedin: List[Social]
     medium: List[Social]
@@ -31,5 +31,5 @@ class PeopleItem:
     name: str
     teams_count: int
     description: str
-    links: Links
+    links: PeopleLinks
     positions: List[Position]

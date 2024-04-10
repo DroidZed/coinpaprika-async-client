@@ -13,7 +13,7 @@ class TagsEndpoint:
 
     async def tags(
         self, additional_fields: Optional[str] = None
-    ) -> ApiError | list[Tag]:
+    ) -> ApiError | list[TagModel]:
         res = await self.__internal.call_api(
             "tags", additional_fields=additional_fields
         )
@@ -23,11 +23,11 @@ class TagsEndpoint:
 
         data: List[Dict[str, Any]] = res.Data
 
-        return [Tag(**t) for t in data]
+        return [TagModel(**t) for t in data]
 
     async def tag(
         self, tag_id: str, additional_fields: Optional[str] = None
-    ) -> ApiError | Tag:
+    ) -> ApiError | TagModel:
         res = await self.__internal.call_api(
             f"tags/{tag_id}", additional_fields=additional_fields
         )
@@ -37,4 +37,4 @@ class TagsEndpoint:
 
         data: Dict[str, Any] = res.Data
 
-        return Tag(**data)
+        return TagModel(**data)
