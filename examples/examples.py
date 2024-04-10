@@ -1,6 +1,6 @@
 from asyncio import run
 
-from coinpaprika_async import (
+from coinpaprika_async_client import (
     CoinsEndpoint,
     ExchangesEndpoint,
     MiscellaneousEndpoints,
@@ -103,7 +103,7 @@ async def get_exchange_list(client: ExchangesEndpoint):
 
 # Get exchange by ID
 async def exchange_currencies(client: ExchangesEndpoint):
-    print(await client.exchange("binance", quotes="USD"))
+    print(await client.get_exchange("binance", quotes="USD"))
 
 
 # Get markets by exchange ID (USD,BTC,ETH,PLN) with quotes USD

@@ -21,7 +21,7 @@ pip install coinpaprika_async
 Or:
 
 ```sh
-pipenv install coinpaprika_async
+poetry add coinpaprika_async
 ```
 
 ## 3. Getting started
@@ -45,10 +45,8 @@ Check out the [examples](./examples) directory.
 
 ## 5. Tests
 
-```test
-pip install -r requirements-dev.txt
-
-pytest tests/test_client.py
+```sh
+py -m pytest -vs .
 ```
 
 ## 6. License
